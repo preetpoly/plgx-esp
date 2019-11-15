@@ -1,5 +1,5 @@
 # PolyLogyx Endpoint Security Platform (ESP) - Community Edition
-PolyLogyx ESP leverages the [Osquery](https://osquery.io/) tool, with [PolyLogx Extension](https://github.com/polylogyx/osq-ext-bin) to provide endpoint visibility and monitoring at scale. To get the details of the architecture of the full platform, please read the [platform docs](https://github.com/polylogyx/platform-docs). This repository provides the community release of the platform which focuses on the Osquery based agent management to provide visbility into endpoint activities, query configuration management, a live query interface and alerting capabilities based on security critical events.
+PolyLogyx ESP leverages the [osquery](https://osquery.io/) tool, with [PolyLogx Extension](https://github.com/polylogyx/osq-ext-bin) to provide endpoint visibility and monitoring. To get the details of the architecture of the full platform, please read the [platform docs](https://github.com/polylogyx/platform-docs). This repository provides the community release of the platform which focuses on the Osquery based agent management to provide visbility into endpoint activities, query configuration management, a live query interface and alerting capabilities based on security critical events.
 
 ## Prerequisites
 - git client software
@@ -8,12 +8,12 @@ PolyLogyx ESP leverages the [Osquery](https://osquery.io/) tool, with [PolyLogx 
 - Docker(18.03.1-CE or above) and [docker-compose (1.21.1 or above)](https://docs.docker.com/compose/install/#install-compose)
 
 
-## Build and deploy
+## Build and Deploy
 
 After you install Docker and Docker Compose, you can install the PolyLogyx
 server.
 
-1.  Clone this repository.
+1.  Clone the PolyLogyx ESP repository.
 
     ```~/Downloads$ git clone https://github.com/polylogyx/plgx-esp.git```
      ```<snip>
@@ -22,7 +22,7 @@ server.
 2.  Switch to the folder where the repository is cloned.
 
     ```~/Downloads\$ cd plgx-esp/```
-3.  Enter the certificate-generate.sh script to generate certificates for
+3.  Run the certificate-generate.sh script file to generate certificates for
     osquery.  
     ```~/Downloads/plgx-esp$ sh ./certificate-generate.sh <IP address>```
     ```x.x.x.x
@@ -32,7 +32,7 @@ server.
     writing new private key to 'nginx/private.key'
     ``` 
             
-    In the syntax, \<IP address\> is the IP address of the system on which on to host the PolyLogyx server. This will generate 
+    In the syntax, \<IP address\> is the IP address of the system on which to host the PolyLogyx server. This will generate 
     the certificate for osquery (used for provisioning clients) and place the certificate in the nginx folder.
 
 4.  Modify and save the .env file.
@@ -60,10 +60,9 @@ server.
 | IBMxForcePass       | Specifies the IBMxForce pass.                                                                            | 
 | PURGE_DATA_DURATION       | Specifies the frequency (in number of days) for purging the data.                                                                            | 
 | THREAT_INTEL_LOOKUP_FREQUENCY       | Specifies the frequency (in minutes) for fetching threat intelligence data.                                                                            |   
-    2. Save the file.
+ 
+ 2. Save the file.
     
-
-
 6.  Run the following command to start Docker compose.
 
     ```docker-compose -p 'plgx-esp' up -d```
